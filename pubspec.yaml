@@ -1,0 +1,48 @@
+name: allocation_front
+description: A new Flutter project.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  # struct and depencie injection of the project
+  flutter_modular: ^3.2.2+1
+  # pack of the icons
+  flutter_feather_icons: ^2.0.0+1
+  # controls for reponsive screen
+  flutter_screenutil: ^5.0.0+2
+  # state management
+  rx_notifier: ^1.1.0
+  # show animations from json files
+  lottie: ^1.0.1
+  # client http
+  dio: ^4.0.0
+  # tools from functional programming
+  dartz: ^0.10.0-nullsafety.2
+  # handle with .env files
+  flutter_dotenv: ^4.0.0-nullsafety.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_modular_test: ^1.0.1
+  mockito: ^5.0.9
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/animations/loading.json
+    - .env
+
+  fonts:
+    - family: Lexend
+      fonts:
+        - asset: assets/fonts/Lexend-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lexend-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Lexend-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Lexend-Bold.ttf
+          weight: 700
