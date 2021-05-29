@@ -5,34 +5,35 @@ import 'package:rx_notifier/rx_notifier.dart';
 
 import '../../../../../../../../shared/theme/theme.dart';
 import '../../controllers/home_controller.dart';
-import '../../stores/get_allocations_store.dart';
-import '../allocationList/allocation_list.dart';
+import '../../stores/get_project_resumes_store.dart';
+import '../actionCard/action_card.widget.dart';
 import '../cardWidget/card_widget.dart';
 import '../errorMessageWidget/error_message_widget.dart';
-import '../insertButton/insert_button.dart';
+import '../summaryList/sumaryList.dart';
 
-class AllocationCardStates extends StatelessWidget {
+class ProjectResumesState extends StatelessWidget {
   final HomeController controller;
-  final Function() insertAllocation;
 
-  const AllocationCardStates(
-      {Key? key, required this.controller, required this.insertAllocation})
-      : super(key: key);
+  const ProjectResumesState({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return RxBuilder(builder: (_) {
-      switch (controller.getAllocationsStore.state) {
-        case GetAllocationState.error:
+      switch (controller.getProjectResumeStore.state) {
+        case GetProjectResumeState.error:
           return Container(
-            height: 420.sp,
+            height: 372.sp,
             child: ErrorMessageWidget(
-              message: controller.getAllocationsStore.errorMessage,
-              onPressed: () => controller.getAllAllocations(),
+              onPressed: () => controller.getProjectResumes(),
+              message: controller.getProjectResumeStore.errorMessage,
             ),
           );
-        case GetAllocationState.loading:
+        case GetProjectResumeState.loading:
           return Container(
-            height: 420.sp,
+            height: 372.sp,
             child: Center(
               child: Lottie.asset(
                 AppAnimations.loading,
@@ -42,39 +43,36 @@ class AllocationCardStates extends StatelessWidget {
               ),
             ),
           );
-        case GetAllocationState.empty:
+        case GetProjectResumeState.empty:
           return Container(
-            height: 420.sp,
+            height: 372.sp,
             alignment: Alignment.center,
             child: Text(
-              "Nenhum alocação encontrada",
+              "Não há resumos encontrados",
               style: TextStyle(
                 color: AppColors.whiteColor,
                 fontSize: 25.sp,
               ),
             ),
           );
-        case GetAllocationState.sucess:
+        case GetProjectResumeState.sucess:
           return CardWidget(
-            height: 420.sp,
-            title: "ALLOCATION",
-            icon: Container(
-              width: 77.sp,
-              height: 37.sp,
-              decoration: BoxDecoration(
-                color: AppColors.orangeColor,
-                borderRadius: BorderRadius.circular(50.r),
-              ),
-              child: Icon(AppIcons.arrowUp, size: 24.sp),
+            height: 372.sp,
+            title: "SUMMARY",
+            actionButton: ActionCard(
+              onPressed: () {},
+              title: "Total",
+              description:
+                  controller.getProjectResumeStore.projectResumes.last.hours,
+              color: AppColors.orangeColor,
             ),
-            actionButton: InsertButton(onPressed: insertAllocation),
-            listData: AllocationList(
-              allocations: controller.getAllocationsStore.allocations,
+            listData: SummaryList(
+              projectResumes: controller.getProjectResumeStore.projectResumes,
             ),
           );
-        case GetAllocationState.idle:
+        case GetProjectResumeState.idle:
           return Container(
-            height: 420.sp,
+            height: 372.sp,
             child: Center(
               child: Lottie.asset(
                 AppAnimations.loading,

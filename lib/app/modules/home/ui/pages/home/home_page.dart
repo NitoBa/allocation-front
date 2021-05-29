@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:allocation_front/app/modules/home/ui/pages/home/components/allocationCardStates/allocation_card_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -10,15 +9,13 @@ import 'package:rx_notifier/rx_notifier.dart';
 import '../../../../../../shared/constants/app_constants.dart';
 import '../../../../../../shared/theme/theme.dart';
 import 'components/Button/button.dart';
-import 'components/actionCard/action_card.widget.dart';
-import 'components/cardWidget/card_widget.dart';
+import 'components/allocationCardStates/allocation_card_states.dart';
 import 'components/checkbox/custom_check_box.dart';
 import 'components/datePicker/date_picker.dart';
-import 'components/dayOffsList/day_offs_list.dart';
+import 'components/dayOffsCardStates/day_offs_card_states.dart';
 import 'components/inputDropdown/input_dropdown.dart';
 import 'components/inputText/input_text.dart';
-import 'components/insertButton/insert_button.dart';
-import 'components/summaryList/sumaryList.dart';
+import 'components/projectResumesState/project_resumes_states.dart';
 import 'controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,6 +31,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   void initState() {
     controller.getAllAllocations();
+    controller.getAllDayOffs();
+    controller.getProjectResumes();
     super.initState();
   }
 
@@ -67,58 +66,58 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AllocationCardStates(
-                    controller: controller,
-                    insertAllocation: () {
-                      showInsertDialog(
-                        context,
-                        title: "Inserir Alocação",
-                        content: Container(
-                          child: Column(
-                            children: [
-                              InputDropdown(
-                                placeholder: 'Nome',
-                                items: AppConstants.devs,
-                                onChanged: (item) {},
+                  controller: controller,
+                  insertAllocation: () {
+                    showInsertDialog(
+                      context,
+                      title: "Inserir Alocação",
+                      content: Container(
+                        child: Column(
+                          children: [
+                            InputDropdown(
+                              placeholder: 'Nome',
+                              items: AppConstants.devs,
+                              onChanged: (item) {},
+                            ),
+                            SizedBox(height: 20.sp),
+                            InputDropdown(
+                              placeholder: 'Projeto',
+                              items: AppConstants.projects,
+                              onChanged: (item) {},
+                            ),
+                            SizedBox(height: 20.sp),
+                            InputDropdown(
+                              placeholder: 'Horas',
+                              items: AppConstants.hours,
+                              onChanged: (item) {},
+                            ),
+                            SizedBox(height: 20.sp),
+                            InputText(
+                              placeholder: "Observação opcional",
+                              onChangeText: (text) {},
+                            ),
+                            SizedBox(height: 80.sp),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Button(
+                                onPressed: () {},
                               ),
-                              SizedBox(height: 20.sp),
-                              InputDropdown(
-                                placeholder: 'Projeto',
-                                items: AppConstants.projects,
-                                onChanged: (item) {},
-                              ),
-                              SizedBox(height: 20.sp),
-                              InputDropdown(
-                                placeholder: 'Horas',
-                                items: AppConstants.hours,
-                                onChanged: (item) {},
-                              ),
-                              SizedBox(height: 20.sp),
-                              InputText(
-                                placeholder: "Observação opcional",
-                                onChangeText: (text) {},
-                              ),
-                              SizedBox(height: 80.sp),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: Button(
-                                  onPressed: () {},
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
-                        onCloseModal: () {},
-                      );
-                    }),
+                      ),
+                      onCloseModal: () {},
+                    );
+                  },
+                ),
                 SizedBox(height: 30.sp),
                 Row(
                   children: [
                     SizedBox(height: 30.sp),
                     Expanded(
-                      child: CardWidget(
-                        height: 372.sp,
-                        title: "DAY OFFS",
-                        actionButton: InsertButton(onPressed: () {
+                      child: DayOffsCardState(
+                        controller: controller,
+                        insertDayOff: () {
                           showInsertDialog(
                             context,
                             title: "Inserir day off",
@@ -188,22 +187,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                             ),
                             onCloseModal: () {},
                           );
-                        }),
-                        listData: DaysOffsList(),
+                        },
                       ),
                     ),
                     SizedBox(width: 20.sp),
                     Expanded(
-                      child: CardWidget(
-                        height: 372.sp,
-                        title: "SUMMARY",
-                        actionButton: ActionCard(
-                          onPressed: () {},
-                          title: "Total",
-                          description: "400",
-                          color: AppColors.orangeColor,
-                        ),
-                        listData: SummaryList(),
+                      child: ProjectResumesState(
+                        controller: controller,
                       ),
                     ),
                   ],

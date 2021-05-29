@@ -39,4 +39,19 @@ class HomeRepositoryImpl implements IHomeRepository {
       }
     }
   }
+
+  @override
+  ProjectResumesResult getAllProjectResumes() async {
+    try {
+      final result = await _datasource.getProjectResumes();
+      return Right(result);
+    } on ClientError catch (e) {
+      if (e.typeError == ClientErrorType.connectTimeout ||
+          e.typeError == ClientErrorType.receiveTimeout) {
+        return Left(ErrorMessage(message: 'time out connection'));
+      } else {
+        return Left(ErrorMessage(message: 'error to get project resumes'));
+      }
+    }
+  }
 }

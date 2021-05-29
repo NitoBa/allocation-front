@@ -17,8 +17,8 @@ class DayOffItemModel extends DayOffItemEntity {
     return DayOffItemModel(
       photoUrl: AppConstants.avatarUsers[json['userName']] ??
           AppConstants.avatarUrlGeneric,
-      userName: json['key'],
-      amount: json['key'],
+      userName: json['userName'],
+      amount: json['amount'].toString(),
     );
   }
 }

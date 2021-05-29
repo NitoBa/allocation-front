@@ -1,3 +1,4 @@
+import 'package:allocation_front/app/modules/home/domain/entities/project_resume_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,8 +6,10 @@ import '../../../../../../../../shared/theme/theme.dart';
 import '../informationItem/informationItem.dart';
 
 class SummaryList extends StatelessWidget {
+  final List<ProjectResumeEntity> projectResumes;
   const SummaryList({
     Key? key,
+    required this.projectResumes,
   }) : super(key: key);
 
   @override
@@ -14,7 +17,7 @@ class SummaryList extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: 5,
+        itemCount: projectResumes.length - 1,
         itemBuilder: (item, index) {
           return Padding(
             padding: EdgeInsets.symmetric(
@@ -35,13 +38,13 @@ class SummaryList extends StatelessWidget {
                   InformationItem(
                     hasIconLeading: true,
                     title: 'Projeto',
-                    subtitle: 'Artbit',
+                    subtitle: projectResumes[index].projectName,
                   ),
                   SizedBox(width: 50.sp),
                   InformationItem(
                     hasIconLeading: true,
                     title: 'Horas',
-                    subtitle: '400',
+                    subtitle: projectResumes[index].hours,
                   ),
                 ],
               ),

@@ -1,3 +1,4 @@
+import 'package:allocation_front/app/modules/home/infra/models/project_resume_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../shared/http_client/client_error.dart';
@@ -48,6 +49,30 @@ class HomeDatasourceImpl implements IHomeDatasource {
 
       result = (response.data as List)
           .map((dayOff) => DayOffItemModel.fromJson(dayOff))
+          .toList();
+
+      return result;
+    } on DioError catch (e) {
+      throw ClientError(
+        error: MapTypeError.mapDioErrorType(e.type),
+        message: e.message,
+        statusCode: e.response?.statusCode,
+      );
+    }
+  }
+
+  @override
+  Future<List<ProjectResumeModel>> getProjectResumes() async {
+    try {
+      List<ProjectResumeModel> result = [];
+
+      final response = await _client.get(
+        "",
+        queryParameters: {"type": "SummaryAllocation"},
+      );
+
+      result = (response.data as List)
+          .map((projectResume) => ProjectResumeModel.fromJson(projectResume))
           .toList();
 
       return result;

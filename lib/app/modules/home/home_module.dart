@@ -1,12 +1,15 @@
-import 'package:allocation_front/app/modules/home/ui/pages/home/stores/get_allocations_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'domain/usecases/get_allocations.dart';
 import 'domain/usecases/get_day_offs.dart';
+import 'domain/usecases/get_projects_resume.dart';
 import 'external/home_datasource_impl.dart';
 import 'infra/repositories/home_repository_impl.dart';
 import 'ui/pages/home/controllers/home_controller.dart';
 import 'ui/pages/home/home_page.dart';
+import 'ui/pages/home/stores/get_allocations_store.dart';
+import 'ui/pages/home/stores/get_day_off_store.dart';
+import 'ui/pages/home/stores/get_project_resumes_store.dart';
 import 'ui/pages/home/stores/insert_allocation_store.dart';
 import 'ui/pages/home/stores/insert_day_off_store.dart';
 
@@ -14,12 +17,15 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     // all controllers
-    Bind.lazySingleton((i) => HomeController(i(), i(), i())),
+    Bind.lazySingleton((i) => HomeController(i(), i(), i(), i(), i())),
     // all usecases
     Bind.factory((i) => GetAllocations(i())),
     Bind.factory((i) => GetDayOffs(i())),
+    Bind.factory((i) => GetProjectResumes(i())),
     // all stores
     Bind.factory((i) => GetAllocationsStore(i())),
+    Bind.factory((i) => GetProjectResumeStore(i())),
+    Bind.factory((i) => GetDayOffStore(i())),
     Bind.factory((i) => InsertDayOffStore()),
     Bind.factory((i) => InsertAllocationStore()),
     // repository layer

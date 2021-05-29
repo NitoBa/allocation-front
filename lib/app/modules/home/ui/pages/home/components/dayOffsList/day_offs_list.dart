@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../../../shared/theme/theme.dart';
+import '../../../../../domain/entities/day_off_item_entity.dart';
 import '../informationItem/informationItem.dart';
 
 class DaysOffsList extends StatelessWidget {
+  final List<DayOffItemEntity> dayOffs;
   const DaysOffsList({
     Key? key,
+    required this.dayOffs,
   }) : super(key: key);
 
   @override
@@ -14,7 +17,7 @@ class DaysOffsList extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: 5,
+        itemCount: dayOffs.length,
         itemBuilder: (item, index) {
           return Padding(
             padding: EdgeInsets.symmetric(
@@ -42,15 +45,15 @@ class DaysOffsList extends StatelessWidget {
                   ),
                   SizedBox(width: 60.sp),
                   InformationItem(
-                    photoUrl: 'https://github.com/Nitoba.png',
+                    photoUrl: dayOffs[index].photoUrl,
                     title: 'Nome',
-                    subtitle: 'Bruno Alves',
+                    subtitle: dayOffs[index].userName,
                   ),
                   SizedBox(width: 50.sp),
                   InformationItem(
                     hasIconLeading: true,
                     title: 'Saldo',
-                    subtitle: '13',
+                    subtitle: dayOffs[index].amount,
                   ),
                 ],
               ),
