@@ -22,12 +22,18 @@ class AllocationItemModel extends AllocationItemEntity {
         );
 
   factory AllocationItemModel.fromJson(Map<String, dynamic> json) {
+    String formatDate(String date) {
+      final dateTime = DateTime.tryParse(date)?.toLocal();
+
+      return "${dateTime?.day.toString().padLeft(2, '0')}/${dateTime?.month.toString().padLeft(2, '0')}/${dateTime?.year}";
+    }
+
     return AllocationItemModel(
       id: json['id'],
       photoUrl: AppConstants.avatarUsers[json['userName']] ??
           AppConstants.avatarUrlGeneric,
       userName: json['userName'],
-      date: json['date'],
+      date: formatDate(json['date']),
       project: json['project'],
       hours: json['timeAllocation'].toString(),
       observation: json['obs'],
