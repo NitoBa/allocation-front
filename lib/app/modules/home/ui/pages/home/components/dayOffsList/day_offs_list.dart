@@ -19,31 +19,41 @@ class DaysOffsList extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 32.w,
-              vertical: 30.sp,
+              vertical: 12.sp,
             ),
-            child: Row(
-              children: [
-                Container(
-                  height: 15.r,
-                  width: 15.r,
-                  decoration: BoxDecoration(
-                    color: AppColors.orangeColor,
-                    shape: BoxShape.circle,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
+              decoration: BoxDecoration(
+                color: AppColors.backgroundColor,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(
+                  color: Colors.white12,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    height: 15.r,
+                    width: 15.r,
+                    decoration: BoxDecoration(
+                      color: AppColors.orangeColor,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                SizedBox(width: 60.sp),
-                InformationItem(
-                  photoUrl: 'https://github.com/Nitoba.png',
-                  title: 'Nome',
-                  subtitle: 'Bruno Alves',
-                ),
-                SizedBox(width: 50.sp),
-                InformationItem(
-                  hasIconLeading: true,
-                  title: 'Saldo',
-                  subtitle: '13',
-                ),
-              ],
+                  SizedBox(width: 60.sp),
+                  InformationItem(
+                    photoUrl: 'https://github.com/Nitoba.png',
+                    title: 'Nome',
+                    subtitle: 'Bruno Alves',
+                  ),
+                  SizedBox(width: 50.sp),
+                  InformationItem(
+                    hasIconLeading: true,
+                    title: 'Saldo',
+                    subtitle: '13',
+                  ),
+                ],
+              ),
             ),
           );
         },

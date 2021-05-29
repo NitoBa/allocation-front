@@ -19,22 +19,32 @@ class SummaryList extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 32.w,
-              vertical: 30.sp,
+              vertical: 12.sp,
             ),
-            child: Row(
-              children: [
-                InformationItem(
-                  hasIconLeading: true,
-                  title: 'Projeto',
-                  subtitle: 'Artbit',
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
+              decoration: BoxDecoration(
+                color: AppColors.backgroundColor,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(
+                  color: Colors.white12,
                 ),
-                SizedBox(width: 50.sp),
-                InformationItem(
-                  hasIconLeading: true,
-                  title: 'Horas',
-                  subtitle: '400',
-                ),
-              ],
+              ),
+              child: Row(
+                children: [
+                  InformationItem(
+                    hasIconLeading: true,
+                    title: 'Projeto',
+                    subtitle: 'Artbit',
+                  ),
+                  SizedBox(width: 50.sp),
+                  InformationItem(
+                    hasIconLeading: true,
+                    title: 'Horas',
+                    subtitle: '400',
+                  ),
+                ],
+              ),
             ),
           );
         },

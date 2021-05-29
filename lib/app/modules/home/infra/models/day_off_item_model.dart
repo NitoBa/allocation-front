@@ -1,3 +1,5 @@
+import 'package:allocation_front/shared/constants/app_constants.dart';
+
 import '../../domain/entities/day_off_item_entity.dart';
 
 class DayOffItemModel extends DayOffItemEntity {
@@ -13,7 +15,8 @@ class DayOffItemModel extends DayOffItemEntity {
 
   factory DayOffItemModel.fromJson(Map<String, dynamic> json) {
     return DayOffItemModel(
-      photoUrl: json['key'],
+      photoUrl: AppConstants.avatarUsers[json['userName']] ??
+          AppConstants.avatarUrlGeneric,
       userName: json['key'],
       amount: json['key'],
     );

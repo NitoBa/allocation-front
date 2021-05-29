@@ -30,6 +30,9 @@ class AppConstants {
         "Germano Gomes":
             "https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png",
       };
+
+  static String get avatarUrlGeneric =>
+      "https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png";
   static List<String> get devs => [
         "Bruno Alves",
         "Fabiano Santana",

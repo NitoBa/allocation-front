@@ -28,6 +28,13 @@ class CardWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardColor,
         borderRadius: BorderRadius.circular(18.r),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black38,
+        //     blurRadius: 30,
+        //     spreadRadius: 0.1,
+        //   )
+        // ],
       ),
       child: Column(
         children: [

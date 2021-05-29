@@ -1,3 +1,4 @@
+import 'package:allocation_front/app/modules/home/ui/pages/home/stores/get_allocations_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'domain/usecases/get_allocations.dart';
@@ -13,11 +14,12 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     // all controllers
-    Bind.lazySingleton((i) => HomeController(i(), i())),
+    Bind.lazySingleton((i) => HomeController(i(), i(), i())),
     // all usecases
     Bind.factory((i) => GetAllocations(i())),
     Bind.factory((i) => GetDayOffs(i())),
     // all stores
+    Bind.factory((i) => GetAllocationsStore(i())),
     Bind.factory((i) => InsertDayOffStore()),
     Bind.factory((i) => InsertAllocationStore()),
     // repository layer
