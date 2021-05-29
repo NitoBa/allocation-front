@@ -9,7 +9,7 @@ import '../../stores/get_project_resumes_store.dart';
 import '../actionCard/action_card.widget.dart';
 import '../cardWidget/card_widget.dart';
 import '../errorMessageWidget/error_message_widget.dart';
-import '../summaryList/sumaryList.dart';
+import '../projectResumes/project_resumes_list_widget.dart';
 
 class ProjectResumesState extends StatelessWidget {
   final HomeController controller;
@@ -58,7 +58,7 @@ class ProjectResumesState extends StatelessWidget {
         case GetProjectResumeState.sucess:
           return CardWidget(
             height: 372.sp,
-            title: "SUMMARY",
+            title: "PROJECT RESUMES",
             actionButton: ActionCard(
               onPressed: () {},
               title: "Total",
@@ -66,7 +66,7 @@ class ProjectResumesState extends StatelessWidget {
                   controller.getProjectResumeStore.projectResumes.last.hours,
               color: AppColors.orangeColor,
             ),
-            listData: SummaryList(
+            listData: ProjectResumesList(
               projectResumes: controller.getProjectResumeStore.projectResumes,
             ),
           );

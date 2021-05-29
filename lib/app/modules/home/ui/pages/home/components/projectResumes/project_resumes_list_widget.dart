@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../../shared/theme/theme.dart';
 import '../informationItem/informationItem.dart';
 
-class SummaryList extends StatelessWidget {
+class ProjectResumesList extends StatelessWidget {
   final List<ProjectResumeEntity> projectResumes;
-  const SummaryList({
+  const ProjectResumesList({
     Key? key,
     required this.projectResumes,
   }) : super(key: key);
