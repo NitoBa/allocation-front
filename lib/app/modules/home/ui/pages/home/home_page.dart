@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:allocation_front/app/app_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -10,6 +11,7 @@ import '../../../../../../shared/constants/app_constants.dart';
 import '../../../../../../shared/theme/theme.dart';
 import 'components/Button/button.dart';
 import 'components/allocationCardStates/allocation_card_states.dart';
+import 'components/changeThemeButton/change_theme_button.dart';
 import 'components/checkbox/custom_check_box.dart';
 import 'components/datePicker/date_picker.dart';
 import 'components/dayOffsCardStates/day_offs_card_states.dart';
@@ -28,8 +30,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
+  late AppController _appController;
+
   @override
   void initState() {
+    _appController = Modular.get<AppController>();
     controller.getAllAllocations();
     controller.getAllDayOffs();
     controller.getProjectResumes();
@@ -48,17 +53,20 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               children: [
                 Text(
                   'Allocation Dashboard',
-                  style: TextStyle(
-                    color: AppColors.titleColor,
-                    fontSize: 32.sp,
-                  ),
+                  style: Theme.of(context).textTheme.headline1?.copyWith(
+                        fontSize: 32.sp,
+                      ),
                 ),
                 SizedBox(width: 14.w),
                 Icon(
                   AppIcons.arrowDown,
-                  color: AppColors.whiteColor,
+                  color: Theme.of(context).primaryColor,
                   size: 20.sp,
                 ),
+                Spacer(),
+                ChangeThemeButton(
+                  onPressed: () => _appController.toggleTheme(),
+                )
               ],
             ),
             SizedBox(height: 54.h),

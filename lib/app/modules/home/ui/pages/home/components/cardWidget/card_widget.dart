@@ -26,15 +26,15 @@ class CardWidget extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: AppColors.cardColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(18.r),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.black38,
-        //     blurRadius: 30,
-        //     spreadRadius: 0.1,
-        //   )
-        // ],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black38,
+            blurRadius: 8,
+            spreadRadius: 0.1,
+          )
+        ],
       ),
       child: Column(
         children: [
@@ -47,10 +47,7 @@ class CardWidget extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
-                        color: AppColors.titleColor,
-                        fontSize: 25.sp,
-                      ),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                     if (icon != null) ...[
                       SizedBox(width: 23.w),

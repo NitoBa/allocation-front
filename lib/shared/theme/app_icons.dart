@@ -7,4 +7,5 @@ class AppIcons {
   static IconData get plus => FeatherIcons.plus;
   static IconData get check => FeatherIcons.check;
   static IconData get dateTicker => FeatherIcons.calendar;
+  static IconData get sun => FeatherIcons.sun;
 }

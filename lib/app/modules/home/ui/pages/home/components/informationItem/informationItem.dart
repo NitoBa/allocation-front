@@ -59,10 +59,7 @@ class InformationItem extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(
-                  color: AppColors.grayLightColor,
-                  fontSize: 16.sp,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               SizedBox(height: 6.sp),
               Container(
@@ -73,10 +70,7 @@ class InformationItem extends StatelessWidget {
                   subtitle,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: AppColors.titleColor,
-                    fontSize: 18.sp,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
             ],

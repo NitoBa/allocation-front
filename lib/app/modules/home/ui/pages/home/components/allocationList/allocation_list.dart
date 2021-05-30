@@ -27,7 +27,7 @@ class AllocationList extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
               decoration: BoxDecoration(
-                color: AppColors.backgroundColor,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
                   color: Colors.white12,

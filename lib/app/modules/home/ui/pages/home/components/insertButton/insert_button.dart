@@ -72,17 +72,18 @@ class _InsertButtonState extends State<InsertButton> {
                             ),
                           ),
                         )
-                      : Icon(AppIcons.plus, size: 24.sp),
+                      : Icon(
+                          AppIcons.plus,
+                          size: 24.sp,
+                          color: AppColors.whiteColor,
+                        ),
                 ),
               ),
             ),
             Spacer(),
             Text(
               widget.description,
-              style: TextStyle(
-                color: AppColors.titleColor,
-                fontSize: 18.sp,
-              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
             Spacer(),
           ],

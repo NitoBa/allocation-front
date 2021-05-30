@@ -65,7 +65,11 @@ class AllocationCardStates extends StatelessWidget {
                 color: AppColors.orangeColor,
                 borderRadius: BorderRadius.circular(50.r),
               ),
-              child: Icon(AppIcons.arrowUp, size: 24.sp),
+              child: Icon(
+                AppIcons.arrowUp,
+                size: 24.sp,
+                color: AppColors.whiteColor,
+              ),
             ),
             actionButton: InsertButton(onPressed: insertAllocation),
             listData: AllocationList(
