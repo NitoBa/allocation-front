@@ -24,7 +24,7 @@ class InputText extends StatelessWidget {
         autofocus: autoFocus!,
         cursorColor: AppColors.titleColor,
         style: TextStyle(
-          color: AppColors.titleColor,
+          color: Theme.of(context).primaryColor,
           fontSize: 22.sp,
         ),
         decoration: InputDecoration(

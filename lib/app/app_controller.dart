@@ -1,10 +1,7 @@
-import 'package:rx_notifier/rx_notifier.dart';
+import '../shared/stores/change_theme_store.dart';
 
 class AppController {
-  RxNotifier<bool> _isDarkMode = RxNotifier<bool>(true);
-  bool get isDarkMode => _isDarkMode.value;
+  final ChangeThemeStore changeThemeStore;
 
-  toggleTheme() {
-    _isDarkMode.value = !_isDarkMode.value;
-  }
+  AppController(this.changeThemeStore);
 }

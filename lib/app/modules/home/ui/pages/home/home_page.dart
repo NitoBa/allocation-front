@@ -65,7 +65,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 ),
                 Spacer(),
                 ChangeThemeButton(
-                  onPressed: () => _appController.toggleTheme(),
+                  onPressed: () =>
+                      _appController.changeThemeStore.toggleTheme(),
                 )
               ],
             ),

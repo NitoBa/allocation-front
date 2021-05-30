@@ -71,4 +71,6 @@ class AppConstants {
         "7 horas",
         "8 horas",
       ];
+
+  static String get storageThemeKey => "@allocation_front_theme";
 }

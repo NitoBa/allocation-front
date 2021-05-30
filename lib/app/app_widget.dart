@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
         builder: (_) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Allocation Dashboard',
-          theme: Modular.get<AppController>().isDarkMode
+          theme: Modular.get<AppController>().changeThemeStore.isDarkMode
               ? AppTheme.darkTheme
               : AppTheme.lightTheme,
         ).modular(),

@@ -85,7 +85,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       builder: (_, child) {
         return Theme(
           data: AppTheme.darkTheme.copyWith(
-            dialogBackgroundColor: AppColors.foregroundColor,
+            dialogBackgroundColor: AppColors.backgroundColor,
             colorScheme: ColorScheme.light(
               primary: AppColors.orangeColor,
               onPrimary: AppColors.whiteColor,

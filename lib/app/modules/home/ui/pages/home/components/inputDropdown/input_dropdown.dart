@@ -32,7 +32,7 @@ class _InputDropdownState extends State<InputDropdown> {
         ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: AppColors.grayLightColor,
+            color: Theme.of(context).accentColor,
           ),
           borderRadius: BorderRadius.circular(20.r),
         ),
@@ -43,22 +43,28 @@ class _InputDropdownState extends State<InputDropdown> {
               size: 24.sp,
             ),
             style: TextStyle(
-              color: AppColors.titleColor,
+              color: Theme.of(context).primaryColor,
               fontSize: 26.sp,
             ),
-            dropdownColor: AppColors.backgroundColor,
+            dropdownColor: Theme.of(context).scaffoldBackgroundColor,
             isExpanded: true,
             underline: Container(),
             items: widget.items.map((item) {
               return DropdownMenuItem(
                 value: item,
-                child: Text(item),
+                child: Text(
+                  item,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               );
             }).toList(),
             hint: Text(
               widget.placeholder,
               style: TextStyle(
-                color: AppColors.grayLightColor,
+                color: Theme.of(context).accentColor,
                 fontSize: 26.sp,
               ),
             ),

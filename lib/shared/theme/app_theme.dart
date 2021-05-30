@@ -8,6 +8,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.backgroundColorLigth,
     cardColor: AppColors.whiteColor,
     primaryColor: AppColors.foregroundColor,
+    accentColor: AppColors.titleColor,
     fontFamily: 'Lexend',
     brightness: Brightness.light,
     textTheme: TextTheme(
@@ -36,6 +37,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.backgroundColor,
     cardColor: AppColors.foregroundColor,
     primaryColor: AppColors.whiteColor,
+    accentColor: AppColors.grayLightColor,
     fontFamily: 'Lexend',
     brightness: Brightness.dark,
     textTheme: TextTheme(
