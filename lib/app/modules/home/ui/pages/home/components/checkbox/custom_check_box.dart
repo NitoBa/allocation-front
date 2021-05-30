@@ -21,7 +21,7 @@ class CustomCheckBox extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: AppColors.titleColor,
+            color: Theme.of(context).primaryColor,
             fontSize: 28.sp,
           ),
         ),

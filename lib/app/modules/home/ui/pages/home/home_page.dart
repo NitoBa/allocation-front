@@ -149,7 +149,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                         Text(
                                           'Você gostaria de:',
                                           style: TextStyle(
-                                            color: AppColors.titleColor,
+                                            color:
+                                                Theme.of(context).primaryColor,
                                             fontSize: 28.sp,
                                           ),
                                         ),
@@ -225,7 +226,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       context: context,
       builder: (_) {
         return Dialog(
-          backgroundColor: AppColors.cardColor,
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.r),
           ),
@@ -241,7 +242,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 vertical: 53.sp,
               ),
               decoration: BoxDecoration(
-                color: AppColors.cardColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(18.r),
               ),
               child: Column(
@@ -251,16 +252,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
-                          color: AppColors.titleColor,
-                          fontSize: 32.sp,
-                        ),
+                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                              fontSize: 32.sp,
+                            ),
                       ),
                       SizedBox(width: 12.sp),
                       Icon(
                         AppIcons.arrowDown,
                         size: 24.sp,
-                        color: AppColors.whiteColor,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ],
                   ),

@@ -1,8 +1,7 @@
-import 'package:allocation_front/app/modules/home/domain/entities/project_resume_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../../shared/theme/theme.dart';
+import '../../../../../domain/entities/project_resume_entity.dart';
 import '../informationItem/informationItem.dart';
 
 class ProjectResumesList extends StatelessWidget {

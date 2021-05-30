@@ -1,7 +1,6 @@
-import 'package:allocation_front/app/modules/home/domain/entities/project_resume_entity.dart';
 import 'package:rx_notifier/rx_notifier.dart';
 
-import '../../../../domain/entities/allocation_item_entity.dart';
+import '../../../../domain/entities/project_resume_entity.dart';
 import '../../../../domain/usecases/get_projects_resume.dart';
 
 enum GetProjectResumeState {
