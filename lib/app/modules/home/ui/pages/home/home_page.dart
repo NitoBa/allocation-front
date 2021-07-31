@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:allocation_front/app/app_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,6 +8,8 @@ import 'package:rx_notifier/rx_notifier.dart';
 
 import '../../../../../../shared/constants/app_constants.dart';
 import '../../../../../../shared/theme/theme.dart';
+import '../../../../../../shared/widgets/inputText/input_text.dart';
+import '../../../../../app_controller.dart';
 import 'components/Button/button.dart';
 import 'components/allocationCardStates/allocation_card_states.dart';
 import 'components/changeThemeButton/change_theme_button.dart';
@@ -16,7 +17,6 @@ import 'components/checkbox/custom_check_box.dart';
 import 'components/datePicker/date_picker.dart';
 import 'components/dayOffsCardStates/day_offs_card_states.dart';
 import 'components/inputDropdown/input_dropdown.dart';
-import 'components/inputText/input_text.dart';
 import 'components/projectResumesState/project_resumes_states.dart';
 import 'controllers/home_controller.dart';
 
