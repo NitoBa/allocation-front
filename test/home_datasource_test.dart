@@ -45,4 +45,28 @@ void main() {
     expect(result, isA<List<AllocationItemModel>>());
     expect(result, isNotEmpty);
   });
+
+  test('Home datasource: should return an error', () async {
+    when(() => dioMock.get(
+          '',
+          queryParameters: {
+            'type': 'AllocationLog',
+          },
+        )).thenAnswer(
+      (_) async => Response(
+        requestOptions: RequestOptions(
+          path: '',
+          queryParameters: {
+            'type': 'AllocationLog',
+          },
+        ),
+        data: AppMocks.allocationLogMock,
+      ),
+    );
+
+    final result = await datasource.getAllAllocations();
+
+    expect(result, isA<List<AllocationItemModel>>());
+    expect(result, isNotEmpty);
+  });
 }

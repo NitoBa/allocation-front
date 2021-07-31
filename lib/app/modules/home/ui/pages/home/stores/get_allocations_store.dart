@@ -13,9 +13,10 @@ enum GetAllocationState {
 
 class GetAllocationsStore {
   final IGetAllocations _usecase;
-  List<AllocationItemEntity> allocations = [];
+  List<AllocationItemEntity> _allocations = [];
   var _state = RxNotifier<GetAllocationState>(GetAllocationState.idle);
   GetAllocationState get state => _state.value;
+  List<AllocationItemEntity> get allocations => _allocations;
   String errorMessage = '';
 
   GetAllocationsStore(this._usecase);
@@ -34,7 +35,7 @@ class GetAllocationsStore {
         return;
       }
       _state.value = GetAllocationState.sucess;
-      allocations = r;
+      _allocations = r;
     });
   }
 }

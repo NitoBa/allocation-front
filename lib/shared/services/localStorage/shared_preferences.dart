@@ -1,6 +1,6 @@
-import 'package:allocation_front/shared/errors/app_errors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../errors/app_errors.dart';
 import 'ilocal_storage.dart';
 
 class SharedPreferencesImpl implements ILocalStorage {

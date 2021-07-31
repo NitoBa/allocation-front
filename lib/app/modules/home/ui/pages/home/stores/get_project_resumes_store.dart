@@ -13,9 +13,11 @@ enum GetProjectResumeState {
 
 class GetProjectResumeStore {
   final IGetProjectResumes _usecase;
-  List<ProjectResumeEntity> projectResumes = [];
+  List<ProjectResumeEntity> _projectResumes = [];
   var _state = RxNotifier<GetProjectResumeState>(GetProjectResumeState.idle);
   GetProjectResumeState get state => _state.value;
+  List<ProjectResumeEntity> get projectResumes => _projectResumes;
+
   String errorMessage = '';
 
   GetProjectResumeStore(this._usecase);
@@ -34,7 +36,7 @@ class GetProjectResumeStore {
         return;
       }
       _state.value = GetProjectResumeState.sucess;
-      projectResumes = r;
+      _projectResumes = r;
     });
   }
 }

@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 
 import '../../constants/app_constants.dart';
+import '../client_error.dart';
 import '../client_interface.dart';
 import '../client_response.dart';
+import 'utils/map_type_error.dart';
 
 class DioClient implements IClientHttp {
   late Dio _dio;
@@ -18,12 +20,26 @@ class DioClient implements IClientHttp {
   // TimerExecutionInterceptor(),
   // ];
 
+  void _onError(DioError err, ErrorInterceptorHandler handler) {
+    throw ClientError(
+      error: err,
+      typeError: MapTypeError.mapDioErrorType(err.type),
+      message: err.message,
+      statusCode: err.response?.statusCode,
+    );
+  }
+
+  _registerInterceptors() {
+    _dio.interceptors.add(InterceptorsWrapper(onError: _onError));
+  }
+
   _initConfig({Dio? clientMock}) {
     if (clientMock == null) {
       _dio = Dio(_baseOptios);
     } else {
       _dio = clientMock;
     }
+    _registerInterceptors();
   }
 
   DioClient({Dio? clientMock}) {

@@ -13,9 +13,11 @@ enum GetDayOffState {
 
 class GetDayOffStore {
   final IGetDayOffs _usecase;
-  List<DayOffItemEntity> dayOffs = [];
+  List<DayOffItemEntity> _dayOffs = [];
   var _state = RxNotifier<GetDayOffState>(GetDayOffState.idle);
   GetDayOffState get state => _state.value;
+  List<DayOffItemEntity> get dayOffs => _dayOffs;
+
   String errorMessage = '';
 
   GetDayOffStore(this._usecase);
@@ -34,7 +36,7 @@ class GetDayOffStore {
         return;
       }
       _state.value = GetDayOffState.sucess;
-      dayOffs = r;
+      _dayOffs = r;
     });
   }
 }

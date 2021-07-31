@@ -1,7 +1,3 @@
-enum NetworkErrorsType {
-  timeout,
-}
-
 abstract class Failure implements Exception {
   String get message;
 }
