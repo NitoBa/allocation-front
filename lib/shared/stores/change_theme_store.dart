@@ -13,7 +13,7 @@ class ChangeThemeStore {
 
   Future<void> _getStorageTheme() async {
     final result =
-        await _localStorage.getItem<bool>(AppConstants.storageThemeKey);
+        await _localStorage.getItem(AppConstants.storageThemeKey) ?? false;
     _isDarkMode.value = result;
   }
 
