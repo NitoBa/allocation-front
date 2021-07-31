@@ -1,11 +1,12 @@
-import 'package:allocation_front/shared/services/localStorage/shared_preferences.dart';
-import 'package:allocation_front/shared/stores/change_theme_store.dart';
+import '../shared/services/localStorage/shared_preferences.dart';
+import '../shared/stores/change_theme_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../shared/http_client/client_interface.dart';
 import '../shared/http_client/custom_dio/dio_client.dart';
 import 'app_controller.dart';
 import 'modules/home/home_module.dart';
+import 'modules/login/login_module.dart';
 
 class AppModule extends Module {
   @override
@@ -22,6 +23,7 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute(Modular.initialRoute, module: HomeModule()),
+    ModuleRoute(Modular.initialRoute, module: LoginModule()),
+    ModuleRoute('/home', module: HomeModule()),
   ];
 }
